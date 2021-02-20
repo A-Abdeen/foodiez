@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch } from "react-router";
+import { useSelector } from "react-redux";
+import CategoryForm from "./components/CategoryForm";
+import IngredientList from "./components/IngredientList";
+import CategoryList from "./components/CategoryList";
+import IngredientForm from "./components/IngredientForm";
 
 function App() {
+  const ingredients = useSelector(
+    (state) => state.ingredientReducer.ingredients
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route path="/new-ingredient">
+        <IngredientForm />
+      </Route>
+      <Route path="/:categoryId">
+        <IngredientList ingredients={ingredients} />
+      </Route>
+      <Route path="/categories/new">
+        <CategoryForm />
+      </Route>
+      <Route path="/">
+        <CategoryList />
+      </Route>
+    </Switch>
   );
 }
 
