@@ -19,7 +19,7 @@ const CategoryForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addCategory(category));
-    history.push("/categories");
+    history.push("/");
   };
   return (
     <form className="container" onSubmit={handleSubmit}>

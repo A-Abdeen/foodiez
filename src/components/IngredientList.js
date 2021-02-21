@@ -20,7 +20,7 @@ const IngredientList = () => {
   const ingredients = category.ingredients.map((ingredient) =>
     allIngredients.find((_ingredient) => _ingredient.id === ingredient.id)
   );
-  console.log(ingredients);
+  // console.log(ingredients);
   // mapping over the array of detailed ingredients
   const ingredientList = ingredients.map((ingredient) => (
     <IngredientItem key={ingredient.id} ingredient={ingredient} />
@@ -28,7 +28,7 @@ const IngredientList = () => {
 
   return (
     <>
-      <Link to="/new-ingredient">
+      <Link to={`/${category.id}/new-ingredient`}>
         <button>Add New Ingredient</button>
       </Link>
       <div>{ingredientList}</div>

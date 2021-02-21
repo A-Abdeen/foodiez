@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addIngredient } from "../store/actions/ingredientsActions";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const IngredientForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const categoryId = useParams().categoryId;
   const [ingredient, setIngredient] = useState({
     name: "",
+    image: "",
+    categoryId: categoryId,
   });
 
   const handleChange = (event) =>
@@ -19,7 +22,7 @@ const IngredientForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addIngredient(ingredient));
-    history.push("/ingredients");
+    history.push("/");
   };
   return (
     <form className="container" onSubmit={handleSubmit}>

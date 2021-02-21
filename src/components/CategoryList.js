@@ -13,6 +13,9 @@ const CategoryList = () => {
       <Link to="/categories/new">
         <button>Add New Category</button>
       </Link>
+      <Link to="/recipes">
+        <button>Recipes Access</button>
+      </Link>
       <div>{categoryList}</div>
     </>
   );
